@@ -6,7 +6,8 @@
 * Multi-Provider ([APNS](https://github.com/tompesman/push-apns), [GCM](https://github.com/tompesman/push-gcm), [C2DM](https://github.com/tompesman/push-c2dm))
 * Integrated feedback processing
 * Rake task to cleanup the database
-* Database for storage (no external dependencies)
+* Database for storage (no external dependencies) 
+* Database use Mongoid instead of ActiveRecord
 
 ## Installation
 
