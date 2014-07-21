@@ -5,8 +5,11 @@ require 'push'
 
 environment = ARGV[0]
 
-config = Struct.new(:foreground, :pid_file, :push_poll, :error_notification, :feedback_poll, :feedback_processor).new
+config = Struct.new(:foreground, :pid_file, :push_poll, :error_notification, :feedback_poll, :feedback_processor, :rolate_log, :log_file_size, :log_size).new
 config.foreground = false
+config.rolate_log = false
+config.log_size = 5
+config.log_file_size = 5*1024*1024
 config.push_poll = 2
 config.error_notification = false
 config.feedback_poll = 60
@@ -21,6 +24,9 @@ ARGV.options do |opts|
   opts.on('-n', '--error-notification', 'Enables error notifications via Airbrake or Bugsnag.') { config.error_notification = true }
   opts.on('-F N', '--feedback-poll N', Integer, "Frequency in seconds to check for feedback for the feedback processor. Default: #{config.feedback_poll}. Use 0 to disable.") { |n| config.feedback_poll = n }
   opts.on('-b PATH', '--feedback-processor PATH', String, "Path to the feedback processor. Default: #{config.feedback_processor}.") { |n| config.feedback_processor = n }
+  opts.on('-r', '--rolate-log', 'Rolate the log file to limit the log size.') { config.rolate_log = true }
+  opts.on('-S N', '--log-size N', Integer, "Number of log files. Default: #{config.log_size}.") { |n| config.log_size = n }
+  opts.on('-L N', '--log-file-size N', Integer, "Size of each log file. Default: #{config.log_file_size}.") { |n| config.log_file_size = n }
   opts.on('-v', '--version', 'Print this version of push.') { puts "push #{Push::VERSION}"; exit }
   opts.on('-h', '--help', 'You\'re looking at it.') { puts opts; exit }
   opts.parse!
