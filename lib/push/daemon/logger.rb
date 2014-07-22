@@ -51,7 +51,7 @@ module Push
           @logger.auto_flushing = Rails.logger.respond_to?(:auto_flushing) ? Rails.logger.auto_flushing : true
         elsif defined?(ActiveSupport::Logger)
           if @options[:rolate_log]
-            @logger = ActiveSupport::Logger.new(log_file, Rails.logger.level, @options[:log_size], @options[:log_file_size])
+            @logger = ActiveSupport::Logger.new(log_file, @options[:log_size], @options[:log_file_size])
           else
             @logger = ActiveSupport::Logger.new(log_file, Rails.logger.level)
           end

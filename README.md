@@ -93,6 +93,9 @@ Where `<environment>` is your Rails environment and `<options>` can be:
     -n, --error-notification         Enables error notifications via Airbrake or Bugsnag.
     -F, --feedback-poll N            Frequency in seconds to check for feedback for the feedback processor. Default: 60. Use 0 to disable.
     -b, --feedback-processor PATH    Path to the feedback processor. Default: lib/push/feedback_processor.
+    -r, --rolate-log                 Rolate the log file to limit the log size.
+    -S, --log-size N                 Number of log files. Default: 5.
+    -L, --log-file-size N            Size of each log file. Default: 5242880(5 megabytes).
     -v, --version                    Print this version of push.
     -h, --help                       You're looking at it.
 
